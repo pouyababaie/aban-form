@@ -5,6 +5,9 @@
     (ngSubmit)="submit()"
   >
     <div id="persoanl-info" class="col-7 mx-auto" formGroupName="personalInfo">
+      <span style="color: #aa0304; background: #aa0304; font-size: 16pt"
+        >.</span
+      >
       <h3>مشخصات فردی</h3>
       <div>
         <label class="block" requiredAsterisk>جنسیت</label>
@@ -421,8 +424,14 @@
         ></textarea>
       </div>
     </div>
-      <div class="flex justify-content-center align-items-center mb-2">
-        <button pButton pRipple label="Submit" icon="pi pi-check" [disabled]="!mainFormGroup.valid"></button>
-      </div>
+    <div class="flex justify-content-center align-items-center mb-2">
+      <button
+        pButton
+        pRipple
+        label="Submit"
+        icon="pi pi-check"
+        [disabled]="!mainFormGroup.valid"
+      ></button>
+    </div>
   </form>
 </main>
