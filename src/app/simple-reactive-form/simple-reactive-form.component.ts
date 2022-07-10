@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { MenuItem } from 'primeng/api';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface ISharedModel {
   name: string;
