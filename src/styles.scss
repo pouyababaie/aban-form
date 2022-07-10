@@ -10,8 +10,12 @@
   font-family: "Montserrat", sans-serif;
 }
 .required-asterisk {
-  color: red;
+  color: #cc0101;
   font-weight: bold;
   margin-right: 5px;
   font-size: 0.7em;
+}
+
+label {
+  font-size: 14px;
 }

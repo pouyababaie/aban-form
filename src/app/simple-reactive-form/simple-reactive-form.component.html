@@ -1,13 +1,19 @@
-<main class="w-full h-full bg-blue-50">
+<main class="w-full h-full bg-white">
   <form
     [formGroup]="mainFormGroup"
     class="w-full h-full m-0"
     (ngSubmit)="submit()"
   >
     <div id="persoanl-info" class="col-7 mx-auto" formGroupName="personalInfo">
-      <span style="color: #aa0304; background: #aa0304; font-size: 16pt"
-        >.</span
-      >
+      <h6 class="rtl" dir="rtl">
+        <span
+          style="color: #aa0304; background: #aa0304; font-size: 16pt"
+          class="mr-1"
+          >.</span
+        ><span style="color: #000; font-size: 16pt" class="mr-1"
+          >تحلیلگر مالی</span
+        >
+      </h6>
       <h3>مشخصات فردی</h3>
       <div>
         <label class="block" requiredAsterisk>جنسیت</label>
@@ -47,7 +53,7 @@
           [showIcon]="true"
           inputId="icon"
           class="w-8"
-          dateFormat="dd/mm/yy"
+          dateFormat="yy/mm/dd"
         ></p-calendar>
       </div>
       <div>
@@ -178,7 +184,7 @@
           [showIcon]="true"
           inputId="icon"
           class="w-8"
-          dateFormat="dd/mm/yy"
+          dateFormat="yy/mm/dd"
         ></p-calendar>
       </div>
       <div class="grid checkbox">
@@ -303,7 +309,7 @@
               [showIcon]="true"
               inputId="icon"
               class="w-8"
-              dateFormat="dd/mm/yy"
+              dateFormat="yy/mm/dd"
             ></p-calendar>
           </div>
           <div>
@@ -313,7 +319,7 @@
               [showIcon]="true"
               inputId="icon"
               class="w-8"
-              dateFormat="dd/mm/yy"
+              dateFormat="yy/mm/dd"
             ></p-calendar>
           </div>
           <div>
@@ -372,7 +378,7 @@
               [showIcon]="true"
               inputId="icon"
               class="w-8"
-              dateFormat="dd/mm/yy"
+              dateFormat="yy/mm/dd"
             ></p-calendar>
           </div>
           <div>
@@ -382,7 +388,7 @@
               [showIcon]="true"
               inputId="icon"
               class="w-8"
-              dateFormat="dd/mm/yy"
+              dateFormat="yy/mm/dd"
             ></p-calendar>
           </div>
           <div>
@@ -390,7 +396,7 @@
               type="text"
               pInputText
               formControlName="description"
-              placeholder="Reason You Left"
+              placeholder="علت خاتمه به کار"
               class="w-8"
             />
           </div>
@@ -407,22 +413,23 @@
         </div>
       </div>
       <div>
+        <textarea
+          pInputTextarea
+          formControlName="description"
+          placeholder="توضیحات"
+          class="w-10"
+        ></textarea>
+      </div>
+      <div>
         <input
           type="text"
           pInputText
           formControlName="captchaCode"
-          placeholder="Enter Captcha"
+          placeholder="کد امنیتی زیر را وارد نمایید"
           class="w-8"
         />
       </div>
-      <div>
-        <textarea
-          pInputTextarea
-          formControlName="description"
-          placeholder="Description"
-          class="w-10"
-        ></textarea>
-      </div>
+      
     </div>
     <div class="flex justify-content-center align-items-center mb-2">
       <button
