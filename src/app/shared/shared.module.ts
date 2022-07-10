@@ -11,9 +11,11 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { MarkAsteriskDirective } from './mark-asterisk.directive';
+import { InvalidStateDirective } from './invalid-state.directive';
 
 @NgModule({
-  declarations: [SimpleReactiveFormComponent],
+  declarations: [SimpleReactiveFormComponent, MarkAsteriskDirective, InvalidStateDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,

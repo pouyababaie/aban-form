@@ -1,8 +1,13 @@
-<main class="w-full h-full">
-  <form [formGroup]="mainFormGroup" class="w-full h-full m-0">
+<main class="w-full h-full bg-blue-50">
+  <form
+    [formGroup]="mainFormGroup"
+    class="w-full h-full m-0"
+    (ngSubmit)="submit()"
+  >
     <div id="persoanl-info" class="col-7 mx-auto" formGroupName="personalInfo">
-      <span><h3>Personal Info</h3></span>
+      <h3>مشخصات فردی</h3>
       <div>
+        <label class="block" requiredAsterisk>جنسیت</label>
         <p-dropdown
           [options]="gender"
           formControlName="gender"
@@ -12,15 +17,18 @@
         ></p-dropdown>
       </div>
       <div>
+        <label class="block" requiredAsterisk>نام</label>
         <input
           type="text"
           pInputText
           formControlName="firstName"
           placeholder="First Name"
           class="w-8"
+          invalidState="firstName"
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>نام خانوادگی</label>
         <input
           type="text"
           pInputText
@@ -30,15 +38,18 @@
         />
       </div>
       <div>
-        <label class="block">Birth Date</label>
+        <label class="block" requiredAsterisk>تاریخ تولد</label>
         <p-calendar
           formControlName="birthDate"
           [showIcon]="true"
           inputId="icon"
           class="w-8"
+          dateFormat="dd/mm/yy"
         ></p-calendar>
       </div>
       <div>
+        <label class="block" requiredAsterisk>محل تولد</label>
+
         <input
           type="text"
           pInputText
@@ -48,30 +59,35 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>کد ملی</label>
         <p-inputNumber
           formControlName="nationalCode"
           placeholder="National Code"
+          [useGrouping]="false"
           class="w-8"
         ></p-inputNumber>
       </div>
-      <label for="marriageStatus" class="block col">Marriage Status</label>
       <div class="grid">
+        <label class="block ml-5" requiredAsterisk>وضعیت تاهل</label>
         <p-radioButton
           name="marriageStatus"
           value="married"
-          label="Married"
+          label="متاهل"
           formControlName="marriageStatus"
           class="col-3"
+          labelStyleClass="mx-3"
         ></p-radioButton>
         <p-radioButton
           name="marriageStatus"
           value="notMarried"
-          label="Not Married"
+          label="مجرد"
           formControlName="marriageStatus"
           class="col-3"
+          labelStyleClass="mx-3"
         ></p-radioButton>
       </div>
       <div>
+        <label class="block" requiredAsterisk>شهر محل سکونت</label>
         <input
           type="text"
           pInputText
@@ -81,6 +97,7 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>محله محل سکونت</label>
         <input
           type="text"
           pInputText
@@ -90,6 +107,7 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>تلفن همراه</label>
         <input
           type="text"
           pInputText
@@ -99,6 +117,7 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>ایمیل</label>
         <input
           type="text"
           pInputText
@@ -108,9 +127,9 @@
       </div>
     </div>
     <div id="ed-bg" class="col-7 mx-auto" formGroupName="educationalInfo">
-      <h3>Educational Background</h3>
+      <h3>سوابق تحصیلی</h3>
       <div>
-        <label class="block">Last Education</label>
+        <label class="block" requiredAsterisk>آخرین مدرک تحصیلی</label>
         <p-dropdown
           [options]="educationGrade"
           formControlName="lastEducationalGrade"
@@ -120,6 +139,7 @@
         ></p-dropdown>
       </div>
       <div>
+        <label class="block" requiredAsterisk>رشته تحصیلی</label>
         <input
           type="text"
           pInputText
@@ -129,6 +149,7 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>نام موسسه اموزشی</label>
         <input
           type="text"
           pInputText
@@ -138,6 +159,7 @@
         />
       </div>
       <div>
+        <label class="block" requiredAsterisk>شهر محل تحصیل</label>
         <input
           type="text"
           pInputText
@@ -147,12 +169,13 @@
         />
       </div>
       <div>
-        <label class="block">Graduation Date</label>
+        <label class="block">تاریخ فراغت از تحصیل</label>
         <p-calendar
           formControlName="graduationDate"
           [showIcon]="true"
           inputId="icon"
           class="w-8"
+          dateFormat="dd/mm/yy"
         ></p-calendar>
       </div>
       <div class="grid">
@@ -210,12 +233,12 @@
         <textarea
           pInputTextarea
           formControlName="otherCertificates"
-          placeholder="Other Certificates"
+          placeholder="سایر دوره ها"
           class="w-8"
         ></textarea>
       </div>
       <div>
-        <label class="block">English Knowledge</label>
+        <label class="block" requiredAsterisk>آشنایی با زبان انگلیسی</label>
         <p-dropdown
           [options]="englishKnowledge"
           formControlName="englishKnowledge"
@@ -226,8 +249,9 @@
       </div>
     </div>
     <div id="work-exp" class="col-7 mx-auto" formGroupName="workExperience">
+      <h3>سوابق کاری</h3>
       <div>
-        <label class="block"> Does Have Work Experience ?</label>
+        <label class="block" requiredAsterisk> سابقه کاری</label>
         <p-dropdown
           [options]="workExperience"
           formControlName="availability"
@@ -247,7 +271,7 @@
               type="text"
               pInputText
               formControlName="companyName"
-              placeholder="Company Name"
+              placeholder="نام محل کار"
               class="w-8"
             />
           </div>
@@ -256,7 +280,7 @@
               type="text"
               pInputText
               formControlName="fieldOfActivity"
-              placeholder="Field Of Activity"
+              placeholder="زمینه فعالیت"
               class="w-8"
             />
           </div>
@@ -265,26 +289,28 @@
               type="text"
               pInputText
               formControlName="jobTitle"
-              placeholder="Job Title"
+              placeholder="عنوان شغلی"
               class="w-8"
             />
           </div>
           <div>
-            <label class="block">Start Date</label>
+            <label class="block" requiredAsterisk>تاریخ شروع به کار</label>
             <p-calendar
               formControlName="startDate"
               [showIcon]="true"
               inputId="icon"
               class="w-8"
+              dateFormat="dd/mm/yy"
             ></p-calendar>
           </div>
           <div>
-            <label class="block">End Date</label>
+            <label class="block" requiredAsterisk>تاریخ خاتمه به کار</label>
             <p-calendar
               formControlName="endDate"
               [showIcon]="true"
               inputId="icon"
               class="w-8"
+              dateFormat="dd/mm/yy"
             ></p-calendar>
           </div>
           <div>
@@ -292,7 +318,7 @@
               type="text"
               pInputText
               formControlName="description"
-              placeholder="Reason You Left"
+              placeholder="علت خاتمه به کار"
               class="w-8"
             />
           </div>
@@ -314,7 +340,7 @@
               type="text"
               pInputText
               formControlName="companyName"
-              placeholder="Company Name"
+              placeholder="نام محل کار"
               class="w-8"
             />
           </div>
@@ -323,7 +349,7 @@
               type="text"
               pInputText
               formControlName="fieldOfActivity"
-              placeholder="Field Of Activity"
+              placeholder="زمینه فعالیت"
               class="w-8"
             />
           </div>
@@ -332,26 +358,28 @@
               type="text"
               pInputText
               formControlName="jobTitle"
-              placeholder="Job Title"
+              placeholder="عنوان شغلی"
               class="w-8"
             />
           </div>
           <div>
-            <label class="block">Start Date</label>
+            <label class="block">تاریخ شروع به کار</label>
             <p-calendar
               formControlName="startDate"
               [showIcon]="true"
               inputId="icon"
               class="w-8"
+              dateFormat="dd/mm/yy"
             ></p-calendar>
           </div>
           <div>
-            <label class="block">End Date</label>
+            <label class="block">تاریخ خاتمه به کار</label>
             <p-calendar
               formControlName="endDate"
               [showIcon]="true"
               inputId="icon"
               class="w-8"
+              dateFormat="dd/mm/yy"
             ></p-calendar>
           </div>
           <div>
@@ -393,8 +421,8 @@
         ></textarea>
       </div>
     </div>
+      <div class="flex justify-content-center align-items-center mb-2">
+        <button pButton pRipple label="Submit" icon="pi pi-check" [disabled]="!mainFormGroup.valid"></button>
+      </div>
   </form>
-  <div class="flex justify-content-center align-items-center mb-2">
-    <button pButton pRipple label="Submit" icon="pi pi-check"></button>
-  </div>
 </main>

@@ -1,7 +1,12 @@
 form {
   div {
     div {
-        margin-block: 0.5rem;
+      margin-block: 0.5rem;
+      direction: rtl;
     }
   }
+}
+label,
+h3 {
+  direction: rtl;
 }
