@@ -1,1 +1,400 @@
-<p>simple-reactive-form works!</p>
+<main class="w-full h-full">
+  <form [formGroup]="mainFormGroup" class="w-full h-full m-0">
+    <div id="persoanl-info" class="col-7 mx-auto" formGroupName="personalInfo">
+      <span><h3>Personal Info</h3></span>
+      <div>
+        <p-dropdown
+          [options]="gender"
+          formControlName="gender"
+          optionLabel="name"
+          optionDisabled="inactive"
+          class="w-4"
+        ></p-dropdown>
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="firstName"
+          placeholder="First Name"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="lastName"
+          placeholder="Last Name"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <label class="block">Birth Date</label>
+        <p-calendar
+          formControlName="birthDate"
+          [showIcon]="true"
+          inputId="icon"
+          class="w-8"
+        ></p-calendar>
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="placeOfBirth"
+          placeholder="Place Of Birth"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <p-inputNumber
+          formControlName="nationalCode"
+          placeholder="National Code"
+          class="w-8"
+        ></p-inputNumber>
+      </div>
+      <label for="marriageStatus" class="block col">Marriage Status</label>
+      <div class="grid">
+        <p-radioButton
+          name="marriageStatus"
+          value="married"
+          label="Married"
+          formControlName="marriageStatus"
+          class="col-3"
+        ></p-radioButton>
+        <p-radioButton
+          name="marriageStatus"
+          value="notMarried"
+          label="Not Married"
+          formControlName="marriageStatus"
+          class="col-3"
+        ></p-radioButton>
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="lodging"
+          placeholder="Lodging"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="neighborhood"
+          placeholder="Neighborhood"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="phoneNumber"
+          placeholder="Phone Number"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="email"
+          placeholder="Email"
+        />
+      </div>
+    </div>
+    <div id="ed-bg" class="col-7 mx-auto" formGroupName="educationalInfo">
+      <h3>Educational Background</h3>
+      <div>
+        <label class="block">Last Education</label>
+        <p-dropdown
+          [options]="educationGrade"
+          formControlName="lastEducationalGrade"
+          optionLabel="name"
+          optionDisabled="inactive"
+          class="w-4"
+        ></p-dropdown>
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="major"
+          placeholder="Major"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="nameOfFacility"
+          placeholder="Name Of Facility"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="facilityLocation"
+          placeholder="Facility Location"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <label class="block">Graduation Date</label>
+        <p-calendar
+          formControlName="graduationDate"
+          [showIcon]="true"
+          inputId="icon"
+          class="w-8"
+        ></p-calendar>
+      </div>
+      <div class="grid">
+        <p-checkbox
+          class="col-2 w-3"
+          name="stockCertificates"
+          value="cert1"
+          formControlName="stockCertificates"
+          label="اصول بازار سرمایه"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-4"
+          name="stockCertificates"
+          value="cert2"
+          formControlName="stockCertificates"
+          label="مدیریت نهادهای بازار سرمایه"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-4"
+          name="stockCertificates"
+          value="cert3"
+          formControlName="stockCertificates"
+          label="کارشناسی عرضه و پذیرش"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-4"
+          name="stockCertificates"
+          value="cert4"
+          formControlName="stockCertificates"
+          label="تحلیل گری بازار سرمایه"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-3"
+          name="stockCertificates"
+          value="cert5"
+          formControlName="stockCertificates"
+          label="ارزشیابی اوراق بهادار"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-4"
+          name="stockCertificates"
+          value="cert6"
+          formControlName="stockCertificates"
+          label="مدیریت سبد اوراق بهادار"
+        ></p-checkbox>
+        <p-checkbox
+          class="col-2 w-4"
+          name="stockCertificates"
+          value="cert7"
+          formControlName="stockCertificates"
+          label="معامله گری بازار سرمایه"
+        ></p-checkbox>
+      </div>
+      <div>
+        <textarea
+          pInputTextarea
+          formControlName="otherCertificates"
+          placeholder="Other Certificates"
+          class="w-8"
+        ></textarea>
+      </div>
+      <div>
+        <label class="block">English Knowledge</label>
+        <p-dropdown
+          [options]="englishKnowledge"
+          formControlName="englishKnowledge"
+          optionLabel="name"
+          optionDisabled="inactive"
+          class="w-4"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div id="work-exp" class="col-7 mx-auto" formGroupName="workExperience">
+      <div>
+        <label class="block"> Does Have Work Experience ?</label>
+        <p-dropdown
+          [options]="workExperience"
+          formControlName="availability"
+          optionLabel="name"
+          optionDisabled="inactive"
+          class="w-4"
+        ></p-dropdown>
+      </div>
+      <div *ngIf="isWorkExpAvailable">
+        <div id="job-1" formGroupName="job1">
+          <h3 class="block">
+            سابقه فعالیت کاری خود در دو محل کاری قبلی خود را اعلام نمایید:
+          </h3>
+          <label class="block">محل کار شماره 1</label>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="companyName"
+              placeholder="Company Name"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="fieldOfActivity"
+              placeholder="Field Of Activity"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="jobTitle"
+              placeholder="Job Title"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <label class="block">Start Date</label>
+            <p-calendar
+              formControlName="startDate"
+              [showIcon]="true"
+              inputId="icon"
+              class="w-8"
+            ></p-calendar>
+          </div>
+          <div>
+            <label class="block">End Date</label>
+            <p-calendar
+              formControlName="endDate"
+              [showIcon]="true"
+              inputId="icon"
+              class="w-8"
+            ></p-calendar>
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="description"
+              placeholder="Reason You Left"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <label class="block">رضایت نامه</label>
+            <p-dropdown
+              [options]="consentLetter"
+              formControlName="consentLetter"
+              optionLabel="name"
+              optionDisabled="inactive"
+              class="w-4"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div id="job-2" formGroupName="job2">
+          <label class="block">محل کار شماره 2</label>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="companyName"
+              placeholder="Company Name"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="fieldOfActivity"
+              placeholder="Field Of Activity"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="jobTitle"
+              placeholder="Job Title"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <label class="block">Start Date</label>
+            <p-calendar
+              formControlName="startDate"
+              [showIcon]="true"
+              inputId="icon"
+              class="w-8"
+            ></p-calendar>
+          </div>
+          <div>
+            <label class="block">End Date</label>
+            <p-calendar
+              formControlName="endDate"
+              [showIcon]="true"
+              inputId="icon"
+              class="w-8"
+            ></p-calendar>
+          </div>
+          <div>
+            <input
+              type="text"
+              pInputText
+              formControlName="description"
+              placeholder="Reason You Left"
+              class="w-8"
+            />
+          </div>
+          <div>
+            <label class="block">رضایت نامه</label>
+            <p-dropdown
+              [options]="consentLetter"
+              formControlName="consentLetter"
+              optionLabel="name"
+              optionDisabled="inactive"
+              class="w-4"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input
+          type="text"
+          pInputText
+          formControlName="captchaCode"
+          placeholder="Enter Captcha"
+          class="w-8"
+        />
+      </div>
+      <div>
+        <textarea
+          pInputTextarea
+          formControlName="description"
+          placeholder="Description"
+          class="w-10"
+        ></textarea>
+      </div>
+    </div>
+  </form>
+  <div class="flex justify-content-center align-items-center">
+    <button pButton pRipple label="Submit" icon="pi pi-check"></button>
+  </div>
+</main>
