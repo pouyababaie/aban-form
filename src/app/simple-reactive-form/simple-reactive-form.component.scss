@@ -1,8 +1,16 @@
 form {
   div {
+    h3 {
+      direction: rtl;
+    }
     div {
       margin-block: 0.5rem;
       direction: rtl;
+      label {
+        margin-block: 0.3rem;
+        font-size: 13pt;
+        font-weight: 500;
+      }
     }
     button {
       background-color: #aa0304;
@@ -10,10 +18,14 @@ form {
     }
   }
 }
-label,
-h3 {
-  direction: rtl;
+
+::ng-deep p-checkbox {
+  label {
+    margin: 0;
+    margin-right: 1rem;
+  }
 }
-[name="stockCertificates"] {
-  justify-content: space-evenly;
+
+::ng-deep .p-datepicker-header {
+  flex-direction: row-reverse;
 }

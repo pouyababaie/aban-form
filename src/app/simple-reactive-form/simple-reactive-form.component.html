@@ -1,28 +1,27 @@
 <main class="w-full h-full bg-white">
+  <h6 class="col-6 rtl text-right mx-auto mb-2" dir="rtl">
+    <span
+      style="color: #aa0304; background: #aa0304; font-size: 16pt"
+      class="mr-1"
+      >.</span
+    ><span style="color: #000; font-size: 16pt" class="mr-1 font-medium"
+      >تحلیلگر مالی</span
+    >
+  </h6>
   <form
     [formGroup]="mainFormGroup"
-    class="w-full h-full m-0"
+    class="w-9 h-full mx-auto"
     (ngSubmit)="submit()"
   >
     <div id="persoanl-info" class="col-7 mx-auto" formGroupName="personalInfo">
-      <h6 class="rtl" dir="rtl">
-        <span
-          style="color: #aa0304; background: #aa0304; font-size: 16pt"
-          class="mr-1"
-          >.</span
-        ><span style="color: #000; font-size: 16pt" class="mr-1"
-          >تحلیلگر مالی</span
-        >
-      </h6>
       <h3>مشخصات فردی</h3>
       <div>
-        <label class="block" requiredAsterisk>جنسیت</label>
+        <label class="inline mx-2" requiredAsterisk>جنسیت</label>
         <p-dropdown
           [options]="gender"
           formControlName="gender"
           optionLabel="name"
           optionDisabled="inactive"
-          class="w-4"
         ></p-dropdown>
       </div>
       <div>
@@ -33,8 +32,18 @@
           formControlName="firstName"
           placeholder="First Name"
           class="w-8"
-          invalidState="firstName"
         />
+        <div
+          *ngIf="
+            personalInfoFG?.get('firstName')?.invalid &&
+            (personalInfoFG?.get('firstName')?.dirty ||
+              personalInfoFG?.get('firstName')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>نام خانوادگی</label>
@@ -45,6 +54,17 @@
           placeholder="Last Name"
           class="w-8"
         />
+        <div
+          *ngIf="
+            personalInfoFG?.get('lastName')?.invalid &&
+            (personalInfoFG?.get('lastName')?.dirty ||
+              personalInfoFG?.get('lastName')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>تاریخ تولد</label>
@@ -55,10 +75,31 @@
           class="w-8"
           dateFormat="yy/mm/dd"
         ></p-calendar>
+        <div
+          *ngIf="
+            personalInfoFG?.get('birthDate')?.invalid &&
+            (personalInfoFG?.get('birthDate')?.dirty ||
+              personalInfoFG?.get('birthDate')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
+        <div
+          *ngIf="
+            !isBirthDateValid &&
+            (personalInfoFG?.get('birthDate')?.dirty ||
+              personalInfoFG?.get('birthDate')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base text-base"
+            >! تاریخ وارد شده صحیح نمیباشد .</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>محل تولد</label>
-
         <input
           type="text"
           pInputText
@@ -66,6 +107,17 @@
           placeholder="Place Of Birth"
           class="w-8"
         />
+        <div
+          *ngIf="
+            personalInfoFG?.get('placeOfBirth')?.invalid &&
+            (personalInfoFG?.get('placeOfBirth')?.dirty ||
+              personalInfoFG?.get('placeOfBirth')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>کد ملی</label>
@@ -75,6 +127,28 @@
           [useGrouping]="false"
           class="w-8"
         ></p-inputNumber>
+        <div
+          *ngIf="
+            personalInfoFG?.get('nationalCode')?.invalid &&
+            (personalInfoFG?.get('nationalCode')?.dirty ||
+              personalInfoFG?.get('nationalCode')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
+        <div
+          *ngIf="
+            !isNationalCodeValid &&
+            (personalInfoFG?.get('nationalCode')?.dirty ||
+              personalInfoFG?.get('nationalCode')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! کد ملی وارد شده صحیح نمیباشد.</small
+          >
+        </div>
       </div>
       <div class="grid">
         <label class="block ml-5" requiredAsterisk>وضعیت تاهل</label>
@@ -94,7 +168,41 @@
           class="col-3"
           labelStyleClass="mx-3"
         ></p-radioButton>
+        <div
+          *ngIf="
+            personalInfoFG?.get('marriageStatus')?.invalid &&
+            (personalInfoFG?.get('marriageStatus')?.dirty ||
+              personalInfoFG?.get('marriageStatus')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
+
+      <div *ngIf="personalInfoFG?.get('gender')?.value.code === 1">
+        <label class="block" requiredAsterisk>وضعیت نظام وظیفه</label>
+        <p-dropdown
+          [options]="militaryServiceStatus"
+          formControlName="militeryStatus"
+          optionLabel="name"
+          optionDisabled="inactive"
+          class="w-4"
+        ></p-dropdown>
+        <div
+          *ngIf="
+            personalInfoFG?.get('militeryStatus')?.invalid &&
+            (personalInfoFG?.get('militeryStatus')?.dirty ||
+              personalInfoFG?.get('militeryStatus')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
+      </div>
+
       <div>
         <label class="block" requiredAsterisk>شهر محل سکونت</label>
         <input
@@ -105,6 +213,17 @@
           class="w-8"
         />
       </div>
+      <div
+        *ngIf="
+          personalInfoFG?.get('lodging')?.invalid &&
+          (personalInfoFG?.get('lodging')?.dirty ||
+            personalInfoFG?.get('lodging')?.touched)
+        "
+      >
+        <small id="username2-help" class="p-error block text-base"
+          >! پر کردن این فیلد اجباریست.</small
+        >
+      </div>
       <div>
         <label class="block" requiredAsterisk>محله محل سکونت</label>
         <input
@@ -114,16 +233,50 @@
           placeholder="Neighborhood"
           class="w-8"
         />
+        <div
+          *ngIf="
+            personalInfoFG?.get('neighborhood')?.invalid &&
+            (personalInfoFG?.get('neighborhood')?.dirty ||
+              personalInfoFG?.get('neighborhood')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>تلفن همراه</label>
-        <input
-          type="text"
-          pInputText
+        <p-inputNumber
           formControlName="phoneNumber"
-          placeholder="Phone Number"
-          class="w-8"
-        />
+          mode="decimal"
+          inputId="withoutgrouping"
+          [useGrouping]="false"
+        >
+        </p-inputNumber>
+
+        <div
+          *ngIf="
+            personalInfoFG?.get('phoneNumber')?.invalid &&
+            (personalInfoFG?.get('phoneNumber')?.dirty ||
+              personalInfoFG?.get('phoneNumber')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
+        <div
+          *ngIf="
+            !isPhoneNumberValid &&
+            (personalInfoFG?.get('phoneNumber')?.dirty ||
+              personalInfoFG?.get('phoneNumber')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! شماره موبایل وارد شده صحیح نمیباشد.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>ایمیل</label>
@@ -133,6 +286,17 @@
           formControlName="email"
           placeholder="Email"
         />
+        <div
+          *ngIf="
+            personalInfoFG?.get('email')?.invalid &&
+            (personalInfoFG?.get('email')?.dirty ||
+              personalInfoFG?.get('email')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! ایمیل مورد تایید نیست.</small
+          >
+        </div>
       </div>
     </div>
     <div id="ed-bg" class="col-7 mx-auto" formGroupName="educationalInfo">
@@ -146,6 +310,17 @@
           optionDisabled="inactive"
           class="w-4"
         ></p-dropdown>
+        <div
+          *ngIf="
+            educationalInfoFG?.get('lastEducationalGrade')?.invalid &&
+            (educationalInfoFG?.get('lastEducationalGrade')?.dirty ||
+              educationalInfoFG?.get('lastEducationalGrade')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>رشته تحصیلی</label>
@@ -153,9 +328,20 @@
           type="text"
           pInputText
           formControlName="major"
-          placeholder="Major"
+          placeholder="رشته تحصیلی"
           class="w-8"
         />
+        <div
+          *ngIf="
+            educationalInfoFG?.get('major')?.invalid &&
+            (educationalInfoFG?.get('major')?.dirty ||
+              educationalInfoFG?.get('major')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>نام موسسه اموزشی</label>
@@ -163,9 +349,20 @@
           type="text"
           pInputText
           formControlName="nameOfFacility"
-          placeholder="Name Of Facility"
+          placeholder="نام موسسه آموزشی"
           class="w-8"
         />
+        <div
+          *ngIf="
+            educationalInfoFG?.get('nameOfFacility')?.invalid &&
+            (educationalInfoFG?.get('nameOfFacility')?.dirty ||
+              educationalInfoFG?.get('nameOfFacility')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
         <label class="block" requiredAsterisk>شهر محل تحصیل</label>
@@ -173,12 +370,23 @@
           type="text"
           pInputText
           formControlName="facilityLocation"
-          placeholder="Facility Location"
+          placeholder="شهر محل تحصیل"
           class="w-8"
         />
+        <div
+          *ngIf="
+            educationalInfoFG?.get('facilityLocation')?.invalid &&
+            (educationalInfoFG?.get('facilityLocation')?.dirty ||
+              educationalInfoFG?.get('facilityLocation')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div>
-        <label class="block">تاریخ فراغت از تحصیل</label>
+        <label class="block" requiredAsterisk>تاریخ فراغت از تحصیل</label>
         <p-calendar
           formControlName="graduationDate"
           [showIcon]="true"
@@ -186,52 +394,64 @@
           class="w-8"
           dateFormat="yy/mm/dd"
         ></p-calendar>
+        <div
+          *ngIf="
+            educationalInfoFG?.get('graduationDate')?.invalid &&
+            (educationalInfoFG?.get('graduationDate')?.dirty ||
+              educationalInfoFG?.get('graduationDate')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div class="grid checkbox">
+        <h3 class="col-12">گواهینامه های بورسی</h3>
         <p-checkbox
-          class="col-2 w-3"
+          class="w-10rem lg:w-10rem my-2 my-2"
           name="stockCertificates"
           value="cert1"
           formControlName="stockCertificates"
           label="اصول بازار سرمایه"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-4"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert2"
           formControlName="stockCertificates"
           label="مدیریت نهادهای بازار سرمایه"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-4"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert3"
           formControlName="stockCertificates"
           label="کارشناسی عرضه و پذیرش"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-4"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert4"
           formControlName="stockCertificates"
           label="تحلیل گری بازار سرمایه"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-3"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert5"
           formControlName="stockCertificates"
           label="ارزشیابی اوراق بهادار"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-4"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert6"
           formControlName="stockCertificates"
           label="مدیریت سبد اوراق بهادار"
         ></p-checkbox>
         <p-checkbox
-          class="col-2 w-4"
+          class="w-10rem lg:w-10rem my-2"
           name="stockCertificates"
           value="cert7"
           formControlName="stockCertificates"
@@ -255,6 +475,17 @@
           optionDisabled="inactive"
           class="w-4"
         ></p-dropdown>
+        <div
+          *ngIf="
+            educationalInfoFG?.get('englishKnowledge')?.invalid &&
+            (educationalInfoFG?.get('englishKnowledge')?.dirty ||
+              educationalInfoFG?.get('englishKnowledge')?.touched)
+          "
+        >
+          <small id="username2-help" class="p-error block text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
     </div>
     <div id="work-exp" class="col-7 mx-auto" formGroupName="workExperience">
@@ -276,60 +507,134 @@
           </h3>
           <label class="block">محل کار شماره 1</label>
           <div>
+            <label class="block" requiredAsterisk>نام محل کار</label>
             <input
               type="text"
               pInputText
               formControlName="companyName"
-              placeholder="نام محل کار"
+              placeholder=""
               class="w-8"
             />
+            <div
+              *ngIf="
+                job1FG?.get('companyName')?.invalid &&
+                (job1FG?.get('companyName')?.dirty ||
+                  job1FG?.get('companyName')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
+            <label class="block" requiredAsterisk>زمینه فعالیت</label>
             <input
               type="text"
               pInputText
               formControlName="fieldOfActivity"
-              placeholder="زمینه فعالیت"
+              placeholder=""
               class="w-8"
             />
+            <div
+              *ngIf="
+                job1FG?.get('fieldOfActivity')?.invalid &&
+                (job1FG?.get('fieldOfActivity')?.dirty ||
+                  job1FG?.get('fieldOfActivity')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
+            <label class="block" requiredAsterisk>عنوان شغلی</label>
             <input
               type="text"
               pInputText
               formControlName="jobTitle"
-              placeholder="عنوان شغلی"
               class="w-8"
             />
+            <div
+              *ngIf="
+                job1FG?.get('jobTitle')?.invalid &&
+                (job1FG?.get('jobTitle')?.dirty ||
+                  job1FG?.get('jobTitle')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
-            <label class="block" requiredAsterisk>تاریخ شروع به کار</label>
-            <p-calendar
-              formControlName="startDate"
-              [showIcon]="true"
-              inputId="icon"
-              class="w-8"
-              dateFormat="yy/mm/dd"
-            ></p-calendar>
+            <div>
+              <label class="block" requiredAsterisk>تاریخ شروع به کار</label>
+              <p-calendar
+                formControlName="startDate"
+                [showIcon]="true"
+                inputId="icon"
+                class="w-8"
+                dateFormat="yy/mm/dd"
+              ></p-calendar>
+              <div
+                *ngIf="
+                  job1FG?.get('startDate')?.invalid &&
+                  (job1FG?.get('startDate')?.dirty ||
+                    job1FG?.get('startDate')?.touched)
+                "
+              >
+                <small id="username2-help" class="p-error block text-base"
+                  >! پر کردن این فیلد اجباریست.</small
+                >
+              </div>
+            </div>
+            <div>
+              <label class="block" requiredAsterisk>تاریخ خاتمه به کار</label>
+              <p-calendar
+                formControlName="endDate"
+                [showIcon]="true"
+                inputId="icon"
+                class="w-8"
+                dateFormat="yy/mm/dd"
+              ></p-calendar>
+            </div>
+            <div
+              *ngIf="
+                !isWorkExpDateValid &&
+                (job1FG?.get('startDate')?.dirty ||
+                  job1FG?.get('startDate')?.touched) &&
+                (job1FG?.get('endDate')?.dirty ||
+                  job1FG?.get('endDate')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >تاریخ وارد شده صحیح نمیباشد</small
+              >
+            </div>
           </div>
+
           <div>
-            <label class="block" requiredAsterisk>تاریخ خاتمه به کار</label>
-            <p-calendar
-              formControlName="endDate"
-              [showIcon]="true"
-              inputId="icon"
-              class="w-8"
-              dateFormat="yy/mm/dd"
-            ></p-calendar>
-          </div>
-          <div>
+            <label class="block" requiredAsterisk>علت خاتمه به کار</label>
             <input
               type="text"
               pInputText
               formControlName="description"
-              placeholder="علت خاتمه به کار"
+              placeholder=""
               class="w-8"
             />
+            <div
+              *ngIf="
+                job1FG?.get('description')?.invalid &&
+                (job1FG?.get('description')?.dirty ||
+                  job1FG?.get('description')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
             <label class="block">رضایت نامه</label>
@@ -345,58 +650,106 @@
         <div id="job-2" formGroupName="job2">
           <label class="block">محل کار شماره 2</label>
           <div>
+            <label class="block" requiredAsterisk>نام محل کار</label>
             <input
               type="text"
               pInputText
               formControlName="companyName"
-              placeholder="نام محل کار"
               class="w-8"
             />
+            <div
+              *ngIf="
+                job2FG?.get('description')?.invalid &&
+                (job2FG?.get('description')?.dirty ||
+                  job2FG?.get('description')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
+            <label class="block" requiredAsterisk>زمینه فعالیت</label>
+
             <input
               type="text"
               pInputText
               formControlName="fieldOfActivity"
-              placeholder="زمینه فعالیت"
               class="w-8"
             />
+            <div
+              *ngIf="
+                job2FG?.get('fieldOfActivity')?.invalid &&
+                (job2FG?.get('fieldOfActivity')?.dirty ||
+                  job2FG?.get('fieldOfActivity')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
+            <label class="block" requiredAsterisk>عنوان شغلی</label>
             <input
               type="text"
               pInputText
               formControlName="jobTitle"
-              placeholder="عنوان شغلی"
               class="w-8"
             />
+            <div
+              *ngIf="
+                job2FG?.get('jobTitle')?.invalid &&
+                (job2FG?.get('jobTitle')?.dirty ||
+                  job2FG?.get('jobTitle')?.touched)
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >! پر کردن این فیلد اجباریست.</small
+              >
+            </div>
           </div>
           <div>
-            <label class="block">تاریخ شروع به کار</label>
-            <p-calendar
-              formControlName="startDate"
-              [showIcon]="true"
-              inputId="icon"
-              class="w-8"
-              dateFormat="yy/mm/dd"
-            ></p-calendar>
+            <div>
+              <label class="block" requiredAsterisk>تاریخ شروع به کار</label>
+              <p-calendar
+                formControlName="startDate"
+                [showIcon]="true"
+                inputId="icon"
+                class="w-8"
+                dateFormat="yy/mm/dd"
+              ></p-calendar>
+            </div>
+            <div>
+              <label class="block" requiredAsterisk>تاریخ خاتمه به کار</label>
+              <p-calendar
+                formControlName="endDate"
+                [showIcon]="true"
+                inputId="icon"
+                class="w-8"
+                dateFormat="yy/mm/dd"
+              ></p-calendar>
+            </div>
+            <div
+              *ngIf="
+                job2FG?.get('job2.endDate')?.invalid &&
+                job2FG?.get('job2.startDate')?.invalid &&
+                !isWorkExpDateValid
+              "
+            >
+              <small id="username2-help" class="p-error block text-base"
+                >تاریخ وارد شده صحیح نمیباشد</small
+              >
+            </div>
           </div>
+
           <div>
-            <label class="block">تاریخ خاتمه به کار</label>
-            <p-calendar
-              formControlName="endDate"
-              [showIcon]="true"
-              inputId="icon"
-              class="w-8"
-              dateFormat="yy/mm/dd"
-            ></p-calendar>
-          </div>
-          <div>
+            <label class="block" requiredAsterisk>علت خاتمه به کار</label>
             <input
               type="text"
               pInputText
               formControlName="description"
-              placeholder="علت خاتمه به کار"
               class="w-8"
             />
           </div>
@@ -412,26 +765,27 @@
           </div>
         </div>
       </div>
-      <div>
-        <textarea
-          pInputTextarea
-          formControlName="description"
-          placeholder="توضیحات"
-          class="w-10"
-        ></textarea>
-      </div>
-      <div>
-        <input
-          type="text"
-          pInputText
-          formControlName="captchaCode"
-          placeholder="کد امنیتی زیر را وارد نمایید"
-          class="w-8"
-        />
-      </div>
-      
     </div>
-    <div class="flex justify-content-center align-items-center mb-2">
+    <div class="w-9 ml-5 rtl" dir="rtl">
+      <textarea
+        pInputTextarea
+        formControlName="description"
+        placeholder="توضیحات"
+        class="w-10"
+      ></textarea>
+    </div>
+    <div class="w-9 ml-5 rtl" dir="rtl">
+      <label class="ml-2" requiredAsterisk
+        ><b>کد امنیتی زیر را وارد نمایید</b></label
+      >
+      <input
+        type="text"
+        pInputText
+        formControlName="captchaCode"
+        placeholder="کد کپچا"
+      />
+    </div>
+    <div class="flex justify-content-around align-items-center mb-2">
       <button
         pButton
         pRipple
@@ -439,6 +793,10 @@
         icon="pi pi-check"
         [disabled]="!mainFormGroup.valid"
       ></button>
+
+      <a class="px-5">
+        <span>{{ captchaValue }} </span>
+      </a>
     </div>
   </form>
 </main>

@@ -5,6 +5,8 @@ export interface ISharedModel {
 }
 export interface IGender extends ISharedModel {}
 
+export interface IMiliteryStatus extends ISharedModel {}
+
 export interface IGrade extends ISharedModel {}
 
 export interface IWorkExp extends ISharedModel {}
