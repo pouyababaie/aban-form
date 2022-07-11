@@ -44,7 +44,7 @@
               personalInfoFG?.get('firstName')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -67,7 +67,7 @@
               personalInfoFG?.get('lastName')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -90,7 +90,7 @@
               personalInfoFG?.get('birthDate')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -101,7 +101,7 @@
               personalInfoFG?.get('birthDate')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! تاریخ وارد شده صحیح نمیباشد .</small
           >
         </div>
@@ -124,7 +124,7 @@
               personalInfoFG?.get('placeOfBirth')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -146,7 +146,7 @@
               personalInfoFG?.get('nationalCode')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -157,7 +157,7 @@
               personalInfoFG?.get('nationalCode')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! کد ملی وارد شده صحیح نمیباشد.</small
           >
         </div>
@@ -193,7 +193,7 @@
               personalInfoFG?.get('marriageStatus')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -221,7 +221,7 @@
               personalInfoFG?.get('militeryStatus')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -238,18 +238,18 @@
           placeholder="Lodging"
           class="w-full md:w-8"
         />
-      </div>
-      <div
-        class="my-2"
-        *ngIf="
-          personalInfoFG?.get('lodging')?.invalid &&
-          (personalInfoFG?.get('lodging')?.dirty ||
-            personalInfoFG?.get('lodging')?.touched)
-        "
-      >
-        <small class="  p-error font-semibold mt-2 block text-base"
-          >! پر کردن این فیلد اجباریست.</small
+        <div
+          class="my-2"
+          *ngIf="
+            personalInfoFG?.get('lodging')?.invalid &&
+            (personalInfoFG?.get('lodging')?.dirty ||
+              personalInfoFG?.get('lodging')?.touched)
+          "
         >
+          <small class="p-error font-semibold my-3 text-base"
+            >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
       </div>
       <div class="my-2 rtl" dir="rtl">
         <label class="block text-base font-semibold my-3" requiredAsterisk
@@ -269,7 +269,7 @@
               personalInfoFG?.get('neighborhood')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -293,7 +293,7 @@
               personalInfoFG?.get('phoneNumber')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -304,7 +304,7 @@
               personalInfoFG?.get('phoneNumber')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! شماره موبایل وارد شده صحیح نمیباشد.</small
           >
         </div>
@@ -326,7 +326,7 @@
               personalInfoFG?.get('email')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! ایمیل مورد تایید نیست.</small
           >
         </div>
@@ -352,7 +352,7 @@
               educationalInfoFG?.get('lastEducationalGrade')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -375,7 +375,7 @@
               educationalInfoFG?.get('major')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -398,7 +398,7 @@
               educationalInfoFG?.get('nameOfFacility')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -421,7 +421,7 @@
               educationalInfoFG?.get('facilityLocation')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -444,8 +444,19 @@
               educationalInfoFG?.get('graduationDate')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
+          >
+        </div>
+        <div
+          *ngIf="
+            !isGradudationDateValid &&
+            (educationalInfoFG?.get('graduationDate')?.dirty ||
+              educationalInfoFG?.get('graduationDate')?.touched)
+          "
+        >
+          <small class="p-error font-semibold mt-2 block text-base"
+            >! تاریخ وارد شده صحیح نمیباشد.</small
           >
         </div>
       </div>
@@ -529,7 +540,7 @@
               educationalInfoFG?.get('englishKnowledge')?.touched)
           "
         >
-          <small class="  p-error font-semibold mt-2 block text-base"
+          <small class="p-error font-semibold mt-2 block text-base"
             >! پر کردن این فیلد اجباریست.</small
           >
         </div>
@@ -554,7 +565,9 @@
           <h2 class="block">
             سابقه فعالیت کاری خود در دو محل کاری قبلی خود را اعلام نمایید:
           </h2>
-          <label class="block text-base font-semibold my-4"
+          <label
+            class="block text-base font-semibold my-4"
+            style="color: #aa0304"
             >محل کار شماره 1</label
           >
           <div class="my-2">
@@ -575,7 +588,7 @@
                   job1FG?.get('companyName')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -598,7 +611,7 @@
                   job1FG?.get('fieldOfActivity')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -620,7 +633,7 @@
                   job1FG?.get('jobTitle')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -644,7 +657,7 @@
                     job1FG?.get('startDate')?.touched)
                 "
               >
-                <small class="  p-error font-semibold mt-2 block text-base"
+                <small class="p-error font-semibold mt-2 block text-base"
                   >! پر کردن این فیلد اجباریست.</small
                 >
               </div>
@@ -670,7 +683,7 @@
                   job1FG?.get('endDate')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >تاریخ وارد شده صحیح نمیباشد</small
               >
             </div>
@@ -694,7 +707,7 @@
                   job1FG?.get('description')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -711,7 +724,9 @@
           </div>
         </div>
         <div id="job-2" formGroupName="job2" class="rtl" dir="rtl">
-          <label class="block text-base font-semibold my-4"
+          <label
+            class="block text-base font-semibold my-4"
+            style="color: #aa0304"
             >محل کار شماره 2</label
           >
           <div class="my-2">
@@ -731,7 +746,7 @@
                   job2FG?.get('description')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -754,7 +769,7 @@
                   job2FG?.get('fieldOfActivity')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -776,7 +791,7 @@
                   job2FG?.get('jobTitle')?.touched)
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >! پر کردن این فیلد اجباریست.</small
               >
             </div>
@@ -813,7 +828,7 @@
                 !isWorkExpDateValid
               "
             >
-              <small class="  p-error font-semibold mt-2 block text-base"
+              <small class="p-error font-semibold mt-2 block text-base"
                 >تاریخ وارد شده صحیح نمیباشد</small
               >
             </div>

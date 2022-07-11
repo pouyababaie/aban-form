@@ -50,6 +50,8 @@ export class SimpleReactiveFormComponent implements OnInit {
 
   isNationalCodeValid: boolean = false;
 
+  isGradudationDateValid: boolean = false;
+
   captchaValue = 122354;
 
   gender: IGender[] = [
@@ -231,6 +233,9 @@ export class SimpleReactiveFormComponent implements OnInit {
       }
       this.checkWorkExpValue(res);
       this.checkBirthDateValue(res);
+      if (res.educationalInfo.graduationDate) {
+        this.checkGraduationDateValue(res.educationalInfo.graduationDate);
+      }
       this.checkWorkExpDatesValue(
         res.workExperience.job1,
         res.workExperience.job2
@@ -249,7 +254,7 @@ export class SimpleReactiveFormComponent implements OnInit {
     if (val.length === 10) {
       this.isPhoneNumberValid = true;
     } else {
-      this.isPhoneNumberValid=false;
+      this.isPhoneNumberValid = false;
     }
   }
 
@@ -278,6 +283,15 @@ export class SimpleReactiveFormComponent implements OnInit {
         this.isBirthDateValid = true;
       }
     } else return;
+  }
+
+  private checkGraduationDateValue(res: any) {
+    let resDate: Date = new Date(res);
+    if (resDate.getTime() > this.currentDate.getTime()) {
+      this.isGradudationDateValid = false;
+    } else {
+      this.isGradudationDateValid = true;
+    }
   }
 
   private checkWorkExpDatesValue(job1: any, job2: any) {
