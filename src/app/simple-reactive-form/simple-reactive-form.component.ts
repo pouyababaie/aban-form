@@ -246,10 +246,10 @@ export class SimpleReactiveFormComponent implements OnInit {
   //#endregion
 
   private checkPhoneNumberLength(val: string) {
-    if (val.length === 11) {
+    if (val.length === 10) {
       this.isPhoneNumberValid = true;
     } else {
-      false;
+      this.isPhoneNumberValid=false;
     }
   }
 
